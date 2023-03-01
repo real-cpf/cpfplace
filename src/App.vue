@@ -2,12 +2,34 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import RCCard from './components/card';
+import RCModal from './components/modal';
 </script>
 
 <template>
   <!-- <HelloWorld msg="You did it!" /> -->
+
   <RCCard bodyText="is good or not good!"/>
+
+  <button @click="show = true">show</button>
+
+<RCModal :show="show" :title="modalTitle" @close="show = false">
+  <template #body>
+    <h1>this is the body in modal</h1>
+  </template>
+</RCModal>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      show:false,
+      modalTitle:'the test title'
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 header {
